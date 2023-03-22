@@ -22,14 +22,15 @@ class FileStorage:
     __objects = {}
 
     def all(self, cls=None):
-        """returns a dictionary
-        Return:
-            returns a dictionary of __object
-        """
-        if cls:
-            return {key: obj for (key, obj) in self.__objects.items()
-                    if isinstance(obj, type(cls))}
-        return self.__objects
+        """returns a dictionary of __object"""
+        if cls is None:
+            return self.__objects
+        cls_name = cls.__name__
+        dct = {}
+        for key in self.__objects.keys():
+            if key.split('.')[0] == cls_name:
+                dct[key] = self.__objects[key]
+        return dct
 
     def new(self, obj):
         """sets __object to given obj
@@ -63,18 +64,18 @@ class FileStorage:
     def delete(self, obj=None):
         """Deletes obj if it's inside the attribute __objects
         """
-        if obj:
-            key = "{}.{}".format(type(obj).__name__, obj.id)
-            if (key, obj) in self.__objects.items():
-                self.__objects.pop(key, None)
-        self.save()
+        if obj is None:
+            return
+        obj_key = obj.to_dict()['__class__'] + '.' + obj.id
+        if obj_key in self.__objects.keys():
+            del self.__objects[obj_key]
 
     def close(self):
         """Deserializes the JSON file to objects"""
         self.reload()
 
     def classes(self):
-        """Returns a dictionary of valid classes and their references."""
+        """Returns a Dictionary of valid classes and their references."""
         from models.base_model import BaseModel
         from models.user import User
         from models.state import State
