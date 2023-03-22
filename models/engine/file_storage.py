@@ -31,7 +31,7 @@ class FileStorage:
             if key.split('.')[0] == cls_name:
                 dct[key] = self.__objects[key]
         return dct
-            
+        
     def new(self, obj):
         """sets __object to given obj
         Args:
@@ -68,7 +68,7 @@ class FileStorage:
             return
         obj_key = obj.to_dict()['__class__'] + '.' + obj.id
         if obj_key in self.__objects.keys():
-                del self.__objects[obj_key]
+            del self.__objects[obj_key]
 
     def close(self):
         """Deserializes the JSON file to objects"""
