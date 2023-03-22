@@ -31,7 +31,7 @@ class FileStorage:
             if key.split('.')[0] == cls_name:
                 dct[key] = self.__objects[key]
         return dct
-        
+
     def new(self, obj):
         """sets __object to given obj
         Args:
