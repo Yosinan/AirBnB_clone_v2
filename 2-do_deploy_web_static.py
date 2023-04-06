@@ -30,6 +30,10 @@ def do_deploy(archive_path):
             dir = 'sudo mkdir -p /data/web_static/\releases/web_static_{}/'
             run(dir.format(tar_dir))
 
+            # uncompress 
+
+            run('sudo tar -xzf /tmp/web_static_{}.tgz -C \
+                    /data/web_static/releases/web_static_{]/'.foramt(tar_dir, tar_dir))
             # Delete the archive
             run('sudo rm /tmp/web_static_{}.tgz'.format(tar_dir))
 
