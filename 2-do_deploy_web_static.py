@@ -18,6 +18,7 @@ env.user = 'ubuntu'
 # private key of my rsa
 env.key = '~/.ssh/id_rsa'
 
+
 def do_deploy(archive_path):
     ''' deploy archive '''
     try:
@@ -25,7 +26,7 @@ def do_deploy(archive_path):
             put(archive_path, '/tmp/')
 
             tar_dir = archive_path[-18:-4]
-            
+
             dir = 'sudo mkdir -p /data/web_static/\releases/web_static_{}/'
             run(dir.format(tar_dir))
 
@@ -40,10 +41,10 @@ def do_deploy(archive_path):
 
             run('sudo mv /data/web_static/releases/web_static_{}/web_static /data/web_static/releases/web_static_{}/'.format(tar_dir))
 
-            run('sudo ln -s /data/web_static/releases/\web_static_{}/ /data/web_static/current'.format(tar_dir))
+            run('sudo ln -s /data/web_static/releases/\\web_static_{}/ /data/web_static/current'.format(tar_dir))
         else:
             return False
-        except Exception:
-            return False
+    except BaseException:
+        return False
 
-        return True
+    return True
