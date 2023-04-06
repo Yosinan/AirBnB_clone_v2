@@ -15,7 +15,7 @@ def do_pack():
     arc_name = datetime.now().strftime("%Y%m%d%H%M%S")
 
     try:
-        local("mkdir -p version")
+        local("mkdir -p versions")
         arc_path = "versions/web_static_{}.tgz".format(arc_name)
         local("tar -cfzv {} web_static/".format(arc_path))
 
