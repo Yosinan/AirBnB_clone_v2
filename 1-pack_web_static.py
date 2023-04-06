@@ -17,8 +17,8 @@ def do_pack():
     try:
         local("mkdir -p versions")
         arc_path = "versions/web_static_{}.tgz".format(arc_name)
-        local("tar -cfzv {} web_static/".format(arc_path))
+        local("tar -czvf {} web_static/".format(arc_path))
 
-        return arc_path
+        return 'arc_path'
     except Exception:
         return None
