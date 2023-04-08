@@ -30,7 +30,7 @@ def do_deploy(archive_path):
         tar_dir = archive_path[-18:-4]
 
         run('sudo mkdir -p /data/web_static/\
-                    releases/web_static_{}/'.format(tar_dir))
+releases/web_static_{}/'.format(tar_dir))
 
         # uncompress
 
