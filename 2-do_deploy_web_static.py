@@ -30,10 +30,10 @@ def do_deploy(archive_path):
             dir = 'sudo mkdir -p /data/web_static/\releases/web_static_{}/'
             run(dir.format(tar_dir))
 
-            # uncompress 
+            # uncompress
 
             run('sudo tar -xzf /tmp/web_static_{}.tgz -C \
-                    /data/web_static/releases/web_static_{]/'.foramt(tar_dir, tar_dir))
+        /data/web_static/releases/web_static_{]/'.foramt(tar_dir, tar_dir))
             # Delete the archive
             run('sudo rm /tmp/web_static_{}.tgz'.format(tar_dir))
 
@@ -43,9 +43,12 @@ def do_deploy(archive_path):
 
             # Create a new the symbolic link
 
-            run('sudo mv /data/web_static/releases/web_static_{}/web_static /data/web_static/releases/web_static_{}/'.format(tar_dir))
+            run('sudo mv \
+/data/web_static/releases/web_static_{}/web_static \
+/data/web_static/releases/web_static_{}/'.format(tar_dir))
 
-            run('sudo ln -s /data/web_static/releases/\\web_static_{}/ /data/web_static/current'.format(tar_dir))
+            run('sudo ln -s /data/web_static/releases/\\web_static_{}/ \
+                    /data/web_static/current'.format(tar_dir))
         else:
             return False
     except BaseException:
