@@ -20,6 +20,10 @@ exec { 'update':
   owner  => 'ubuntu',
 }
 
+-> exec { 'chown -R ubuntu:ubuntu /data/':
+  path => '/usr/bin/:/usr/local/bin/:/bin/',
+}
+
 -> file { '/data/web_static/current':
   ensure => symlink,
   target => '/usr/bin/env sed -i "/listen80 default_server/a location \
