@@ -32,7 +32,7 @@ def do_deploy(archive_path):
         run('sudo mkdir -p /data/web_static/\
 releases/web_static_{}/'.format(tar_dir))
         # uncompress
-        run('sudo tar -xvzf /tmp/web_static_{}.tgz -C \
+        run('sudo tar -xzf /tmp/web_static_{}.tgz -C \
 /data/web_static/releases/web_static_{}/'.foramt(tar_dir, tar_dir))
         # Delete the archive
         run('sudo rm /tmp/web_static_{}.tgz'.format(tar_dir))
@@ -45,7 +45,7 @@ releases/web_static_{}/'.format(tar_dir))
         # Create a new the symbolic link
         run('sudo ln -s /data/web_static/releases/\
             web_static_{}/ /data/web_static/current'.format(tar_dir))
-    except BaseException:
+    except:
         return False
 
     return True
