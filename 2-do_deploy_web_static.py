@@ -10,13 +10,13 @@ from fabric.api import *
 from os import path
 
 # my servers ip
-# env.hosts = ['18.235.248.166', '100.26.226.17']
+env.hosts = ['18.235.248.166', '100.26.226.17']
 
 # user
-# env.user = 'ubuntu'
+env.user = 'ubuntu'
 
 # private key of my rsa
-# env.key = '~/.ssh/id_rsa'
+env.key = '~/.ssh/id_rsa'
 
 
 def do_deploy(archive_path):
