@@ -20,7 +20,7 @@ env.key = '~/.ssh/id_rsa'
 
 
 def do_pack():
-    """generates a tgz archive"""
+    ''' generates a tgz archive'''
     try:
         ''' Fabric script that generates a .tgz archive '''
 
@@ -70,7 +70,7 @@ def do_deploy(archive_path):
 
 
 def deploy():
-    """creates and distributes an archive to the web servers"""
+    ''' creates and distributes an archive to the web servers '''
     archive_path = do_pack()
     if archive_path is None:
         return False
