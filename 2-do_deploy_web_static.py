@@ -16,7 +16,7 @@ env.hosts = ['18.235.248.166', '100.26.226.17']
 env.user = 'ubuntu'
 
 # private key of my rsa
-env.key = '~/.ssh/id_rsa'
+env.key = '~/.ssh/school'
 
 
 def do_deploy(archive_path):
