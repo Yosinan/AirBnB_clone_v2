@@ -37,8 +37,7 @@ releases/web_static_{}/'.format(tar_dir))
         # Delete the archive
         run('sudo rm /tmp/web_static_{}.tgz'.format(tar_dir))
 
-        run('sudo mv \
-/data/web_static/releases/web_static_{}/web_static/* \
+        run('sudo mv /data/web_static/releases/web_static_{}/web_static/* \
 /data/web_static/releases/web_static_{}/'.format(tar_dir))
         # Delete the symbolic link
         run('sudo rm -rf /data/web_static/current')
