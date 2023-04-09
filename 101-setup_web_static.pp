@@ -4,34 +4,34 @@ exec { 'update':
   command => '/usr/bin/apt-get update',
 }
 
--> package { 'nginx':
+package { 'nginx':
   ensure => installed,
 }
 
--> file { '/data/web_static/releases/test/index.html':
+file { '/data/web_static/releases/test/index.html':
   content => 'Test Page',
   group   => 'ubuntu',
   owner   => 'ubuntu',
 }
 
--> file { ['/data/', '/data/web_static', '/data/web_static/releases/', '/data/web_static/releases/test', '/data/web_static/shared' ]:
+file { ['/data/', '/data/web_static', '/data/web_static/releases/', '/data/web_static/releases/test', '/data/web_static/shared' ]:
   ensure => 'directory',
   group  => 'ubuntu',
   owner  => 'ubuntu',
 }
 
--> exec { 'chown -R ubuntu:ubuntu /data/':
+exec { 'chown -R ubuntu:ubuntu /data/':
   path => '/usr/bin/:/usr/local/bin/:/bin/',
 }
 
--> file { '/data/web_static/current':
+file { '/data/web_static/current':
   ensure => symlink,
   target => '/usr/bin/env sed -i "/listen80 default_server/a location \
 /hbnb_static/ { alias /data/web_static/current/;}" \
 /etc/nginx/sites-enabled/default',
 }
 
--> run { 'nginx':
+run { 'nginx':
   ensure  => running,
   require => Package['nginx'],
 }
