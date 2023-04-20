@@ -1,4 +1,5 @@
 #!/bin/bash
+
 git add .
 git commit -m "Web_Flask"
 git push
