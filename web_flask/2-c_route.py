@@ -8,18 +8,23 @@ from flask import Flask, escape
 app = Flask(__name__)
 
 # app decorator for routing
+
+
 @app.route('/', strict_slashes=False)
 def hello():
     return 'Hello HBNB!'
+
 
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
     return 'HBNB'
 
+
 @app.route('/c/<text>', strict_slashes=False)
 def c_text(text):
     new_txt = text.replace('_', ' ')
     return 'C %s' % escape(new_txt)
+
 
 if __name__ == '__main__':
     ''' run the app '''
