@@ -26,7 +26,10 @@ def filters():
     states = list(storage.all(State).values())
     amenities = list(storage.all(Amenity).values())
 
-    return render_template('10-hbnb_filters.html', states=states, amenities=amenities)
+    return render_template(
+        '10-hbnb_filters.html',
+        states=states,
+        amenities=amenities)
 
 
 if __name__ == '__main__':
