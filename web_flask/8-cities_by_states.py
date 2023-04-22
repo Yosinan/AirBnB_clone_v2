@@ -30,7 +30,7 @@ def listStates():
 def citiesByStates():
     ''' lists cities by states '''
     states = list(storage.all(State).values())
-    return render_template('8-cities_by_states.html', states=list(states))
+    return render_template('8-cities_by_states.html', states=states)
 
 
 if __name__ == '__main__':
